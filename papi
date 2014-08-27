@@ -1,0 +1,27 @@
+function calc(min, max, size)
+
+  local percent = size / max 
+  
+  local x = percent * min
+  
+  return size, x
+
+end
+
+function progress(mon,current, max, pos1, pos2, size, long)
+  local maxX,x = calc(current,max,long)
+  for i=0,size do
+    for z=1,maxX do
+      mon.setCursorPos(pos1+z,pos2+i)
+      if z <= x then
+        mon.setBackgroundColor(colors.green)
+      else
+        mon.setBackgroundColor(colors.white)
+      end
+
+      mon.write(" ")
+    end
+  end
+end
+
+
